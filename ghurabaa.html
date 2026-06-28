@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>غُرَبَاء – رفيقك الروحي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --cream:#F5F0E6;
+    --cream2:#EDE7D6;
+    --brown-dark:#2C1A0E;
+    --brown-mid:#5C3A1E;
+    --brown-light:#8B5E3C;
+    --gold:#C9A84C;
+    --gold-light:#E8D08A;
+    --gold-dark:#9B7A2E;
+    --white:#FFFDF8;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Tajawal',sans-serif;
+    background:var(--cream);
+    color:var(--brown-dark);
+    overflow-x:hidden;
+  }
+
+  /* ─── STARS BACKGROUND ─── */
+  .stars-bg{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    pointer-events:none;z-index:0;overflow:hidden;
+  }
+  .star{
+    position:absolute;border-radius:50%;
+    background:var(--gold);opacity:0;
+    animation:twinkle var(--dur,3s) ease-in-out infinite var(--delay,0s);
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0;transform:scale(0.5);}
+    50%{opacity:var(--max-op,0.4);transform:scale(1);}
+  }
+
+  /* ─── NAV ─── */
+  nav{
+    position:fixed;top:0;width:100%;z-index:100;
+    padding:1rem 3rem;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(245,240,230,0.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(201,168,76,0.2);
+    transition:all 0.3s ease;
+  }
+  .nav-logo{
+    font-family:'Amiri',serif;
+    font-size:1.5rem;font-weight:700;
+    color:var(--brown-dark);
+    display:flex;align-items:center;gap:0.5rem;
+  }
+  .nav-logo .dot{color:var(--gold);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{
+    text-decoration:none;color:var(--brown-mid);
+    font-size:0.95rem;font-weight:500;
+    transition:color 0.3s;
+  }
+  .nav-links a:hover{color:var(--gold);}
+  .nav-btn{
+    background:var(--brown-dark);color:var(--gold-light);
+    border:none;padding:0.6rem 1.5rem;border-radius:50px;
+    font-family:'Tajawal',sans-serif;font-size:0.95rem;
+    cursor:pointer;transition:all 0.3s;
+    text-decoration:none;display:inline-block;
+  }
+  .nav-btn:hover{background:var(--brown-mid);transform:translateY(-2px);}
+
+  /* ─── HERO ─── */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    text-align:center;
+    position:relative;z-index:1;
+    padding:2rem;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;
+    width:600px;height:600px;
+    background:radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    border-radius:50%;
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+
+  /* ─── MOSQUE SVG ─── */
+  .mosque-wrapper{
+    position:relative;
+    margin-bottom:2.5rem;
+    filter:drop-shadow(0 0 40px rgba(201,168,76,0.3));
+    transition:transform 0.1s ease-out;
+  }
+  .mosque-svg{
+    width:260px;height:auto;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-12px);}
+  }
+
+  /* Mosque glow pulses */
+  .mosque-halo{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:180px;height:180px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(201,168,76,0.2) 0%,transparent 70%);
+    animation:halo-pulse 3s ease-in-out infinite;
+  }
+  @keyframes halo-pulse{
+    0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.5;}
+    50%{transform:translate(-50%,-50%) scale(1.3);opacity:1;}
+  }
+  .mosque-ring{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    border:1px solid rgba(201,168,76,0.3);
+    border-radius:50%;
+    animation:ring-expand 3s ease-out infinite;
+  }
+  .mosque-ring:nth-child(2){animation-delay:1s;}
+  .mosque-ring:nth-child(3){animation-delay:2s;}
+  @keyframes ring-expand{
+    0%{width:100px;height:100px;opacity:0.7;}
+    100%{width:300px;height:300px;opacity:0;}
+  }
+
+  .hero-badge{
+    background:rgba(201,168,76,0.15);
+    border:1px solid rgba(201,168,76,0.4);
+    color:var(--gold-dark);
+    padding:0.4rem 1.2rem;
+    border-radius:50px;
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+    margin-bottom:1.2rem;
+    display:inline-block;
+    animation:fade-in-down 1s ease 0.2s both;
+  }
+  .hero-title{
+    font-family:'Amiri',serif;
+    font-size:clamp(3.5rem,10vw,7rem);
+    font-weight:700;
+    line-height:1.1;
+    color:var(--brown-dark);
+    animation:fade-in-up 1s ease 0.4s both;
+    text-shadow:0 2px 20px rgba(201,168,76,0.2);
+  }
+  .hero-title .gold-text{color:var(--gold);}
+  .hero-sub{
+    font-size:clamp(1rem,2.5vw,1.25rem);
+    color:var(--brown-mid);
+    max-width:520px;
+    margin:1rem auto 2rem;
+    line-height:1.8;
+    font-weight:400;
+    animation:fade-in-up 1s ease 0.6s both;
+  }
+  .hero-cta{
+    display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+    animation:fade-in-up 1s ease 0.8s both;
+  }
+  .btn-primary{
+    background:var(--brown-dark);
+    color:var(--gold-light);
+    padding:0.9rem 2.5rem;
+    border-radius:50px;
+    font-size:1rem;font-weight:600;
+    text-decoration:none;
+    transition:all 0.3s;
+    border:none;cursor:pointer;
+    font-family:'Tajawal',sans-serif;
+    display:inline-flex;align-items:center;gap:0.5rem;
+    box-shadow:0 4px 20px rgba(44,26,14,0.3);
+  }
+  .btn-primary:hover{
+    background:var(--brown-mid);
+    transform:translateY(-3px);
+    box-shadow:0 8px 30px rgba(44,26,14,0.4);
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--brown-dark);
+    padding:0.9rem 2.5rem;
+    border-radius:50px;
+    font-size:1rem;font-weight:600;
+    text-decoration:none;
+    transition:all 0.3s;
+    border:2px solid rgba(201,168,76,0.5);
+    cursor:pointer;
+    font-family:'Tajawal',sans-serif;
+  }
+  .btn-secondary:hover{
+    border-color:var(--gold);
+    background:rgba(201,168,76,0.08);
+    transform:translateY(-3px);
+  }
+  .dev-credit{
+    margin-top:3rem;
+    font-size:0.85rem;
+    color:var(--brown-light);
+    animation:fade-in-up 1s ease 1s both;
+    border:1px solid rgba(201,168,76,0.3);
+    padding:0.5rem 1.5rem;
+    border-radius:50px;
+    display:inline-block;
+  }
+  .scroll-hint{
+    position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+    animation:fade-in 2s ease 1.5s both;
+    color:var(--brown-light);font-size:0.8rem;
+  }
+  .scroll-arrow{
+    width:20px;height:20px;
+    border-right:2px solid var(--gold);
+    border-bottom:2px solid var(--gold);
+    transform:rotate(45deg);
+    animation:bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce{
+    0%,100%{transform:rotate(45deg) translateY(0);}
+    50%{transform:rotate(45deg) translateY(6px);}
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider{
+    display:flex;align-items:center;gap:1rem;
+    margin:0 auto;max-width:400px;
+    padding:2rem 0;
+  }
+  .divider-line{flex:1;height:1px;background:linear-gradient(to left,transparent,var(--gold),transparent);}
+  .divider-gem{
+    width:8px;height:8px;
+    background:var(--gold);
+    transform:rotate(45deg);
+  }
+
+  /* ─── SECTION GENERIC ─── */
+  section{position:relative;z-index:1;}
+  .section-eyebrow{
+    font-size:0.8rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--gold-dark);
+    font-weight:600;
+    margin-bottom:0.75rem;
+  }
+  .section-title{
+    font-family:'Amiri',serif;
+    font-size:clamp(2rem,5vw,3rem);
+    color:var(--brown-dark);
+    line-height:1.2;
+    margin-bottom:1rem;
+  }
+  .section-lead{
+    color:var(--brown-mid);
+    font-size:1.05rem;
+    line-height:1.9;
+    max-width:600px;
+    margin:0 auto;
+  }
+
+  /* ─── FEATURES ─── */
+  .features{
+    padding:6rem 2rem;
+    text-align:center;
+    background:var(--white);
+  }
+  .features-intro{margin-bottom:4rem;}
+  .features-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:2rem;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .feature-card{
+    background:var(--cream);
+    border:1px solid rgba(201,168,76,0.2);
+    border-radius:20px;
+    padding:2.5rem 2rem;
+    transition:all 0.4s ease;
+    position:relative;
+    overflow:hidden;
+    text-align:right;
+  }
+  .feature-card::before{
+    content:'';
+    position:absolute;top:0;left:0;right:0;
+    height:3px;
+    background:linear-gradient(to left,var(--gold),var(--gold-light),var(--gold));
+    transform:scaleX(0);
+    transition:transform 0.4s ease;
+    transform-origin:right;
+  }
+  .feature-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 50px rgba(44,26,14,0.12);
+    border-color:rgba(201,168,76,0.5);
+  }
+  .feature-card:hover::before{transform:scaleX(1);}
+  .feature-icon{
+    width:60px;height:60px;
+    background:var(--brown-dark);
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.5rem;
+    margin-right:auto;
+  }
+  .feature-icon svg{width:30px;height:30px;}
+  .feature-name{
+    font-family:'Amiri',serif;
+    font-size:1.4rem;
+    color:var(--brown-dark);
+    margin-bottom:0.75rem;
+  }
+  .feature-desc{
+    color:var(--brown-mid);
+    font-size:0.95rem;
+    line-height:1.8;
+  }
+  .feature-tag{
+    display:inline-block;
+    margin-top:1rem;
+    background:rgba(201,168,76,0.15);
+    color:var(--gold-dark);
+    font-size:0.78rem;
+    padding:0.25rem 0.75rem;
+    border-radius:50px;
+    font-weight:600;
+  }
+
+  /* ─── SCREENS SHOWCASE ─── */
+  .showcase{
+    padding:6rem 2rem;
+    background:var(--cream);
+    overflow:hidden;
+  }
+  .showcase-intro{text-align:center;margin-bottom:4rem;}
+  .screens-track{
+    display:flex;
+    gap:1.5rem;
+    overflow-x:auto;
+    padding:2rem 4rem;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    cursor:grab;
+  }
+  .screens-track:active{cursor:grabbing;}
+  .screens-track::-webkit-scrollbar{display:none;}
+  .screen-item{
+    flex:0 0 220px;
+    scroll-snap-align:center;
+    display:flex;flex-direction:column;align-items:center;
+    gap:1rem;
+  }
+  .phone-frame{
+    width:220px;height:440px;
+    background:var(--brown-dark);
+    border-radius:36px;
+    padding:12px;
+    box-shadow:
+      0 25px 60px rgba(44,26,14,0.35),
+      0 0 0 1px rgba(201,168,76,0.2),
+      inset 0 0 0 1px rgba(255,255,255,0.05);
+    transition:transform 0.3s ease,box-shadow 0.3s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .phone-frame:hover{
+    transform:translateY(-12px) rotate(-1deg);
+    box-shadow:
+      0 40px 80px rgba(44,26,14,0.4),
+      0 0 0 1px rgba(201,168,76,0.4);
+  }
+  .phone-screen{
+    width:100%;height:100%;
+    border-radius:28px;
+    overflow:hidden;
+    background:var(--cream);
+  }
+  .phone-screen img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:top;
+    display:block;
+  }
+  .phone-notch{
+    position:absolute;top:10px;left:50%;transform:translateX(-50%);
+    width:60px;height:4px;
+    background:rgba(201,168,76,0.4);
+    border-radius:2px;
+    z-index:10;
+  }
+  .screen-label{
+    font-size:0.85rem;
+    color:var(--brown-mid);
+    font-weight:500;
+    text-align:center;
+  }
+
+  /* ─── QUOTE / HADITH ─── */
+  .hadith-section{
+    padding:6rem 2rem;
+    background:var(--brown-dark);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hadith-section::before{
+    content:'';
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(
+      45deg,
+      transparent,transparent 40px,
+      rgba(201,168,76,0.03) 40px,rgba(201,168,76,0.03) 41px
+    );
+  }
+  .hadith-glow{
+    position:absolute;
+    width:500px;height:300px;
+    background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 70%);
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+  .hadith-content{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+  .hadith-icon{
+    width:60px;height:60px;
+    border:1px solid rgba(201,168,76,0.4);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 2rem;
+  }
+  .hadith-icon svg{width:28px;height:28px;}
+  .hadith-text{
+    font-family:'Amiri',serif;
+    font-size:clamp(1.3rem,3vw,1.8rem);
+    color:var(--gold-light);
+    line-height:1.9;
+    margin-bottom:1rem;
+  }
+  .hadith-source{
+    font-size:0.9rem;
+    color:rgba(201,168,76,0.6);
+  }
+
+  /* ─── STATS ─── */
+  .stats{
+    padding:5rem 2rem;
+    background:var(--white);
+    text-align:center;
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:2rem;
+    max-width:900px;
+    margin:0 auto;
+  }
+  .stat-card{
+    padding:2.5rem 1.5rem;
+    border-radius:20px;
+    border:1px solid rgba(201,168,76,0.2);
+    transition:all 0.3s;
+    background:var(--cream);
+  }
+  .stat-card:hover{
+    border-color:var(--gold);
+    transform:translateY(-5px);
+  }
+  .stat-number{
+    font-family:'Amiri',serif;
+    font-size:3rem;
+    color:var(--gold);
+    font-weight:700;
+    display:block;
+    line-height:1;
+    margin-bottom:0.5rem;
+  }
+  .stat-label{
+    color:var(--brown-mid);
+    font-size:0.9rem;
+  }
+
+  /* ─── DOWNLOAD ─── */
+  .download{
+    padding:8rem 2rem;
+    background:var(--cream);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .download-mosque-bg{
+    position:absolute;
+    bottom:-20px;left:50%;transform:translateX(-50%);
+    width:500px;
+    opacity:0.04;
+    pointer-events:none;
+  }
+  .download-inner{
+    position:relative;z-index:1;
+    max-width:600px;margin:0 auto;
+  }
+  .download-icon{
+    width:100px;height:100px;
+    background:var(--brown-dark);
+    border-radius:26px;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 2rem;
+    box-shadow:0 10px 40px rgba(44,26,14,0.3);
+    border:2px solid rgba(201,168,76,0.3);
+  }
+  .download-icon svg{width:55px;height:55px;}
+  .download-buttons{
+    display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+    margin-top:2.5rem;
+  }
+  .store-btn{
+    display:inline-flex;align-items:center;gap:0.75rem;
+    background:var(--brown-dark);
+    color:var(--cream);
+    padding:1rem 2rem;
+    border-radius:16px;
+    text-decoration:none;
+    transition:all 0.3s;
+    border:1px solid rgba(201,168,76,0.3);
+    min-width:200px;
+  }
+  .store-btn:hover{
+    background:var(--brown-mid);
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(44,26,14,0.3);
+    border-color:var(--gold);
+  }
+  .store-btn-text{text-align:right;}
+  .store-btn-sub{font-size:0.72rem;color:rgba(245,240,230,0.6);display:block;}
+  .store-btn-name{font-size:1rem;font-weight:700;color:var(--gold-light);}
+  .store-btn svg{width:28px;height:28px;flex-shrink:0;}
+
+  /* ─── FOOTER ─── */
+  footer{
+    background:var(--brown-dark);
+    color:rgba(245,240,230,0.6);
+    text-align:center;
+    padding:3rem 2rem;
+    font-size:0.9rem;
+    border-top:1px solid rgba(201,168,76,0.2);
+  }
+  footer .footer-logo{
+    font-family:'Amiri',serif;
+    font-size:2rem;
+    color:var(--gold-light);
+    margin-bottom:0.5rem;
+  }
+  footer .footer-dev{
+    color:rgba(201,168,76,0.7);
+    margin-top:0.5rem;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fade-in-up{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes fade-in-down{
+    from{opacity:0;transform:translateY(-20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes fade-in{
+    from{opacity:0;}to{opacity:1;}
+  }
+  .reveal{
+    opacity:0;transform:translateY(40px);
+    transition:opacity 0.7s ease,transform 0.7s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .reveal-delay-1{transition-delay:0.1s;}
+  .reveal-delay-2{transition-delay:0.2s;}
+  .reveal-delay-3{transition-delay:0.3s;}
+  .reveal-delay-4{transition-delay:0.4s;}
+  .reveal-delay-5{transition-delay:0.5s;}
+
+  @media(max-width:768px){
+    nav{padding:1rem 1.5rem;}
+    .nav-links{display:none;}
+    .mosque-svg{width:200px;}
+    .phone-frame{width:180px;height:360px;}
+    .feature-card{text-align:center;}
+    .feature-icon{margin-left:auto;margin-right:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars-bg" id="stars"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="14" r="13" fill="#2C1A0E" stroke="#C9A84C" stroke-width="1"/>
+      <path d="M14 6 L14 9 M14 9 Q14 5 11 5 Q8 5 8 8 L8 12 Q8 14 10 14 L18 14 Q20 14 20 12 L20 8 Q20 5 17 5 Q14 5 14 9" fill="none" stroke="#C9A84C" stroke-width="1" stroke-linecap="round"/>
+      <rect x="8" y="14" width="12" height="7" rx="1" fill="#C9A84C"/>
+      <rect x="12.5" y="16" width="3" height="5" rx="0.5" fill="#2C1A0E"/>
+    </svg>
+    <span>غُرَبَاء <span class="dot">◆</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">المميزات</a></li>
+    <li><a href="#screens">لقطات التطبيق</a></li>
+    <li><a href="#download">تحميل</a></li>
+  </ul>
+  <a href="#download" class="nav-btn">حمّل التطبيق</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <!-- Mosque with parallax glow -->
+  <div class="mosque-wrapper" id="mosque-wrapper">
+    <div class="mosque-halo"></div>
+    <div class="mosque-ring"></div>
+    <div class="mosque-ring"></div>
+    <div class="mosque-ring"></div>
+    <svg class="mosque-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground -->
+      <rect x="20" y="220" width="220" height="6" rx="3" fill="#C9A84C" opacity="0.4"/>
+
+      <!-- Main building body -->
+      <rect x="45" y="160" width="170" height="65" rx="4" fill="#2C1A0E"/>
+      <rect x="47" y="162" width="166" height="61" rx="3" fill="#3D2B1F"/>
+
+      <!-- Arched windows on body -->
+      <rect x="60" y="175" width="25" height="30" rx="12" fill="#C9A84C" opacity="0.6"/>
+      <rect x="63" y="177" width="19" height="26" rx="9" fill="#2C1A0E" opacity="0.8"/>
+
+      <rect x="118" y="175" width="25" height="30" rx="12" fill="#C9A84C" opacity="0.6"/>
+      <rect x="121" y="177" width="19" height="26" rx="9" fill="#2C1A0E" opacity="0.8"/>
+
+      <rect x="176" y="175" width="25" height="30" rx="12" fill="#C9A84C" opacity="0.6"/>
+      <rect x="179" y="177" width="19" height="26" rx="9" fill="#2C1A0E" opacity="0.8"/>
+
+      <!-- Main door -->
+      <rect x="110" y="185" width="40" height="40" rx="20" fill="#C9A84C" opacity="0.5"/>
+      <rect x="113" y="188" width="34" height="37" rx="17" fill="#2C1A0E"/>
+      <rect x="116" y="190" width="28" height="32" rx="14" fill="#3D2B1F" opacity="0.5"/>
+
+      <!-- Side towers / minarets base -->
+      <rect x="35" y="145" width="28" height="80" rx="3" fill="#2C1A0E"/>
+      <rect x="37" y="147" width="24" height="76" rx="2" fill="#3D2B1F"/>
+      <!-- left window -->
+      <rect x="43" y="168" width="12" height="18" rx="6" fill="#C9A84C" opacity="0.5"/>
+
+      <rect x="198" y="145" width="28" height="80" rx="3" fill="#2C1A0E"/>
+      <rect x="200" y="147" width="24" height="76" rx="2" fill="#3D2B1F"/>
+      <!-- right window -->
+      <rect x="206" y="168" width="12" height="18" rx="6" fill="#C9A84C" opacity="0.5"/>
+
+      <!-- Small dome on left tower -->
+      <ellipse cx="49" cy="147" rx="16" ry="10" fill="#2C1A0E"/>
+      <ellipse cx="49" cy="145" rx="14" ry="9" fill="#3D2B1F"/>
+      <path d="M49 136 Q49 130 52 124 Q55 118 49 115 Q43 118 46 124 Q49 130 49 136" fill="#C9A84C"/>
+      <circle cx="49" cy="113" r="3" fill="#C9A84C"/>
+      <!-- crescent -->
+      <path d="M47 110 Q52 108 53 113 Q48 111 47 110" fill="#E8D08A"/>
+
+      <!-- Small dome on right tower -->
+      <ellipse cx="212" cy="147" rx="16" ry="10" fill="#2C1A0E"/>
+      <ellipse cx="212" cy="145" rx="14" ry="9" fill="#3D2B1F"/>
+      <path d="M212 136 Q212 130 215 124 Q218 118 212 115 Q206 118 209 124 Q212 130 212 136" fill="#C9A84C"/>
+      <circle cx="212" cy="113" r="3" fill="#C9A84C"/>
+      <path d="M210 110 Q215 108 216 113 Q211 111 210 110" fill="#E8D08A"/>
+
+      <!-- Main dome base arch -->
+      <rect x="78" y="130" width="104" height="34" rx="3" fill="#2C1A0E"/>
+      <rect x="80" y="132" width="100" height="30" rx="2" fill="#3D2B1F"/>
+
+      <!-- Main dome -->
+      <ellipse cx="130" cy="132" rx="54" ry="36" fill="#2C1A0E"/>
+      <ellipse cx="130" cy="130" rx="52" ry="34" fill="#3D2B1F"/>
+      <!-- Dome highlight arc -->
+      <path d="M90 115 Q130 80 170 115" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+      <!-- Dome lines decoration -->
+      <path d="M100 125 Q130 90 160 125" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.25"/>
+
+      <!-- Main minaret (center) -->
+      <rect x="122" y="60" width="16" height="75" rx="2" fill="#2C1A0E"/>
+      <rect x="124" y="62" width="12" height="71" rx="1" fill="#3D2B1F"/>
+      <!-- Minaret balcony -->
+      <rect x="118" y="100" width="24" height="4" rx="1" fill="#C9A84C" opacity="0.7"/>
+      <rect x="118" y="120" width="24" height="4" rx="1" fill="#C9A84C" opacity="0.7"/>
+      <!-- Minaret top -->
+      <path d="M130 45 Q130 35 133 28 Q136 21 130 18 Q124 21 127 28 Q130 35 130 45" fill="#C9A84C"/>
+      <circle cx="130" cy="16" r="4" fill="#C9A84C"/>
+      <!-- Main crescent -->
+      <path d="M127 12 Q133 9 135 16 Q129 13 127 12" fill="#E8D08A"/>
+
+      <!-- Decorative horizontal band -->
+      <rect x="45" y="155" width="170" height="3" fill="#C9A84C" opacity="0.3"/>
+      <rect x="35" y="155" width="28" height="3" fill="#C9A84C" opacity="0.3"/>
+      <rect x="198" y="155" width="28" height="3" fill="#C9A84C" opacity="0.3"/>
+
+      <!-- Stars -->
+      <g opacity="0.6" fill="#C9A84C">
+        <circle cx="25" cy="40" r="1.5" class="star-dot"/>
+        <circle cx="235" cy="55" r="1.5" class="star-dot"/>
+        <circle cx="15" cy="100" r="1" class="star-dot"/>
+        <circle cx="245" cy="90" r="1" class="star-dot"/>
+        <circle cx="30" cy="70" r="1" class="star-dot"/>
+        <circle cx="240" cy="130" r="1.2" class="star-dot"/>
+      </g>
+    </svg>
+  </div>
+
+  <span class="hero-badge">✦ تطبيق إسلامي شامل ✦</span>
+
+  <h1 class="hero-title">
+    غُرَبَاء<br>
+    <span style="font-size:0.5em;color:var(--brown-mid);font-weight:400;font-family:'Tajawal',sans-serif;">
+      رفيقك في كل وقت وحين
+    </span>
+  </h1>
+
+  <p class="hero-sub">
+    أذكار الصباح والمساء، مواقيت الصلاة، اتجاه القبلة، التسبيح، والرفيق الروحي — كل ما تحتاجه في مكان واحد.
+  </p>
+
+  <div class="hero-cta">
+    <a href="#download" class="btn-primary">⬇ حمّل التطبيق مجاناً</a>
+    <a href="#screens" class="btn-secondary">اكتشف المميزات</a>
+  </div>
+
+  <div class="dev-credit">تطوير المهندس زيد حردان</div>
+
+  <div class="scroll-hint">
+    <span>اكتشف المزيد</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-gem"></div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- Features -->
+<section class="features" id="features">
+  <div class="features-intro reveal">
+    <p class="section-eyebrow">مميزات التطبيق</p>
+    <h2 class="section-title">كل ما يحتاجه المسلم في يومه</h2>
+    <p class="section-lead">صُمِّم غُرَبَاء ليكون رفيقك الروحي الدائم، بواجهة جميلة وتجربة سلسة تجعل العبادة أقرب إلى قلبك.</p>
+  </div>
+
+  <div class="features-grid">
+    <!-- Prayer Times -->
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="10" stroke="#C9A84C" stroke-width="1.5"/>
+          <path d="M15 8 L15 15 L20 17" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="feature-name">مواقيت الصلاة</h3>
+      <p class="feature-desc">عداد تنازلي دقيق لكل صلاة مع التاريخ الهجري والميلادي. يعمل تلقائياً بحسب موقعك الجغرافي.</p>
+      <span class="feature-tag">الفجر · الظهر · العصر · المغرب · العشاء</span>
+    </div>
+
+    <!-- Athkar -->
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 6 L22 6 Q24 6 24 8 L24 24 Q24 26 22 26 L10 26 L6 22 L6 8 Q6 6 8 6Z" stroke="#C9A84C" stroke-width="1.5"/>
+          <line x1="10" y1="12" x2="20" y2="12" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="10" y1="16" x2="18" y2="16" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="10" y1="20" x2="16" y2="20" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="feature-name">حصن المسلم</h3>
+      <p class="feature-desc">أذكار الصباح والمساء، وأذكار النوم، وأذكار ما بعد الصلاة — مُنظَّمة بشكل جميل يسهّل قراءتها وحفظها.</p>
+      <span class="feature-tag">أذكار الصباح · المساء · النوم · بعد الصلاة</span>
+    </div>
+
+    <!-- Tasbih -->
+    <div class="feature-card reveal reveal-delay-3">
+      <div class="feature-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="9" stroke="#C9A84C" stroke-width="1.5"/>
+          <circle cx="15" cy="15" r="5" stroke="#C9A84C" stroke-width="1.2" opacity="0.6"/>
+          <circle cx="15" cy="6" r="2" fill="#C9A84C"/>
+          <line x1="15" y1="6" x2="15" y2="8" stroke="#C9A84C" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3 class="feature-name">السبحة الرقمية</h3>
+      <p class="feature-desc">سبحة إلكترونية أنيقة للتسبيح بـ سبحان الله، الحمد لله، الله أكبر، مع عداد يصل إلى 33 تسبيحة.</p>
+      <span class="feature-tag">سبحان الله · الحمد لله · الله أكبر</span>
+    </div>
+
+    <!-- Qibla -->
+    <div class="feature-card reveal reveal-delay-4">
+      <div class="feature-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="10" stroke="#C9A84C" stroke-width="1.5"/>
+          <path d="M15 7 L17 14 L15 13 L13 14 Z" fill="#C9A84C"/>
+          <path d="M15 23 L13 16 L15 17 L17 16 Z" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="15" cy="15" r="1.5" fill="#C9A84C"/>
+        </svg>
+      </div>
+      <h3 class="feature-name">اتجاه القبلة</h3>
+      <p class="feature-desc">بوصلة دقيقة تشير نحو الكعبة المشرفة مع عرض المسافة إلى مكة المكرمة. قريباً: تجربة الواقع المعزز AR.</p>
+      <span class="feature-tag">قادمة: تجربة AR</span>
+    </div>
+
+    <!-- Spiritual Companion -->
+    <div class="feature-card reveal reveal-delay-5">
+      <div class="feature-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="8" width="20" height="15" rx="5" stroke="#C9A84C" stroke-width="1.5"/>
+          <path d="M10 22 L8 26" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M20 22 L22 26" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="11" cy="14" r="1.5" fill="#C9A84C"/>
+          <circle cx="19" cy="14" r="1.5" fill="#C9A84C"/>
+          <path d="M12 18 Q15 20 18 18" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 class="feature-name">الرفيق الروحي</h3>
+      <p class="feature-desc">رفيقك الذكي المستعد دائماً — أخبره كيف تشعر وسيقترح لك الذكر أو الدعاء الذي يناسب حالك.</p>
+      <span class="feature-tag">رفيق يفهمك</span>
+    </div>
+
+    <!-- Achievements -->
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5 L17.5 11 L24 11.5 L19.2 16 L21 22 L15 18.5 L9 22 L10.8 16 L6 11.5 L12.5 11 Z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="feature-name">إنجازاتي</h3>
+      <p class="feature-desc">تتبّع انتظامك في الصلاة والأذكار يوماً بيوم، واكسب شارات التميز في رحلة الالتزام والمواظبة.</p>
+      <span class="feature-tag">الأيام المتتالية · شارات التميز</span>
+    </div>
+  </div>
+</section>
+
+<!-- Screens Showcase -->
+<section class="showcase" id="screens">
+  <div class="showcase-intro reveal">
+    <p class="section-eyebrow">لقطات من التطبيق</p>
+    <h2 class="section-title">واجهة أنيقة تُريح العين</h2>
+    <p class="section-lead">تصميم دافئ يجمع بين الأصالة الإسلامية والحداثة في تجربة مستخدم سلسة</p>
+  </div>
+
+  <div class="screens-track" id="screens-track">
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="1.jpeg" alt="شاشة الترحيب – غُرَبَاء">
+        </div>
+      </div>
+      <span class="screen-label">شاشة الترحيب</span>
+    </div>
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="2.jpeg" alt="الرئيسية – مواقيت الصلاة">
+        </div>
+      </div>
+      <span class="screen-label">مواقيت الصلاة</span>
+    </div>
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="3.jpeg" alt="حصن المسلم – الأذكار">
+        </div>
+      </div>
+      <span class="screen-label">حصن المسلم</span>
+    </div>
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="4.jpeg" alt="السبحة الرقمية">
+        </div>
+      </div>
+      <span class="screen-label">السبحة الرقمية</span>
+    </div>
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="5.jpeg" alt="اتجاه القبلة">
+        </div>
+      </div>
+      <span class="screen-label">اتجاه القبلة</span>
+    </div>
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="6.jpeg" alt="الرفيق الروحي">
+        </div>
+      </div>
+      <span class="screen-label">الرفيق الروحي</span>
+    </div>
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="7.jpeg" alt="إنجازاتي">
+        </div>
+      </div>
+      <span class="screen-label">إنجازاتي</span>
+    </div>
+  </div>
+</section>
+
+<!-- Hadith Quote -->
+<section class="hadith-section">
+  <div class="hadith-glow"></div>
+  <div class="hadith-content reveal">
+    <div class="hadith-icon">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 8 Q6 4 10 4 L18 4 Q22 4 22 8 L22 20 Q22 24 18 24 L10 24 Q6 24 6 20 Z" stroke="#C9A84C" stroke-width="1.2"/>
+        <path d="M10 12 Q12 8 14 12 Q16 8 18 12" stroke="#C9A84C" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <line x1="10" y1="17" x2="18" y2="17" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+    <p class="hadith-text">
+      «بَدَأَ الإسلامُ غَرِيبًا وسيعودُ غَرِيبًا كَمَا بَدَأَ، فَطُوبَى لِلْغُرَبَاء»
+    </p>
+    <p class="hadith-source">رواه مسلم — وعلى اسمهم سُمِّي التطبيق</p>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-card reveal reveal-delay-1">
+      <span class="stat-number">٥</span>
+      <span class="stat-label">أقسام رئيسية متكاملة</span>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <span class="stat-number">١٠٠+</span>
+      <span class="stat-label">ذكر وورد يومي</span>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <span class="stat-number">٢٤/٧</span>
+      <span class="stat-label">رفيقك الروحي دائماً</span>
+    </div>
+    <div class="stat-card reveal reveal-delay-4">
+      <span class="stat-number">٠</span>
+      <span class="stat-label">بدون إعلانات — مجاناً</span>
+    </div>
+  </div>
+</section>
+
+<!-- Download -->
+<section class="download" id="download">
+  <!-- BG Mosque silhouette -->
+  <svg class="download-mosque-bg" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="250" cy="120" rx="100" ry="70" fill="#2C1A0E"/>
+    <rect x="150" y="120" width="200" height="120" fill="#2C1A0E"/>
+    <rect x="100" y="100" width="50" height="140" fill="#2C1A0E"/>
+    <rect x="350" y="100" width="50" height="140" fill="#2C1A0E"/>
+    <path d="M250 50 L250 10 M235 65 L225 45 M265 65 L275 45" stroke="#2C1A0E" stroke-width="8"/>
+  </svg>
+
+  <div class="download-inner">
+    <div class="reveal">
+      <div class="download-icon">
+        <svg viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Simplified mosque icon -->
+          <circle cx="27.5" cy="12" r="3" fill="#C9A84C"/>
+          <path d="M27.5 9 Q27.5 3 30 1 Q33 -1 27.5 -2 Q22 -1 25 1 Q27.5 3 27.5 9" fill="#C9A84C"/>
+          <ellipse cx="27.5" cy="20" rx="14" ry="9" fill="#C9A84C" opacity="0.8"/>
+          <rect x="13.5" y="20" width="28" height="20" rx="2" fill="#C9A84C"/>
+          <rect x="8" y="18" width="10" height="27" rx="2" fill="#C9A84C" opacity="0.7"/>
+          <rect x="37" y="18" width="10" height="27" rx="2" fill="#C9A84C" opacity="0.7"/>
+          <rect x="22" y="28" width="11" height="17" rx="5" fill="#2C1A0E"/>
+        </svg>
+      </div>
+      <p class="section-eyebrow">حمّل التطبيق الآن</p>
+      <h2 class="section-title">ابدأ رحلتك الروحية اليوم</h2>
+      <p class="section-lead" style="margin:0 auto;">غُرَبَاء مجاني، بدون إعلانات، ويعمل حتى بدون إنترنت للأذكار والسبحة.</p>
+    </div>
+
+    <div class="download-buttons reveal reveal-delay-2">
+      <!-- The actual APK download button — replace href with real path -->
+      <a href="ghurabaa.rar" class="store-btn" id="download-apk">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 4 L4 24 M20 4 L24 24 M6 14 L22 14" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="8" r="3" fill="#C9A84C"/>
+          <circle cx="19" cy="8" r="3" fill="#C9A84C"/>
+        </svg>
+        <div class="store-btn-text">
+          <span class="store-btn-sub">تنزيل مباشر</span>
+          <span class="store-btn-name">Android APK</span>
+        </div>
+      </a>
+
+      <a href="#" class="store-btn" style="opacity:0.55;cursor:not-allowed;" title="قريباً على App Store">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 14 Q20 8 14 6 M14 6 Q10 4 8 8 Q6 12 10 16 Q14 20 20 18" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M14 6 L14 2 Q16 0 18 2" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="store-btn-text">
+          <span class="store-btn-sub">قريباً</span>
+          <span class="store-btn-name">App Store</span>
+        </div>
+      </a>
+    </div>
+
+    <p class="reveal" style="margin-top:1.5rem;font-size:0.82rem;color:var(--brown-light);">
+      تطوير المهندس زيد حردان · الإصدار 1.0
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">غُرَبَاء</div>
+  <p>رفيقك الروحي في كل وقت وحين</p>
+  <p class="footer-dev">تطوير المهندس زيد حردان · ٢٠٢٥</p>
+</footer>
+
+<script>
+// ── Generate stars ──
+const starsEl = document.getElementById('stars');
+for(let i=0;i<60;i++){
+  const s = document.createElement('div');
+  s.className='star';
+  const size = Math.random()*3+1;
+  s.style.cssText=`
+    width:${size}px;height:${size}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    --dur:${Math.random()*4+2}s;
+    --delay:${Math.random()*4}s;
+    --max-op:${Math.random()*0.3+0.1};
+  `;
+  starsEl.appendChild(s);
+}
+
+// ── Parallax mosque on scroll ──
+const mosqueWrapper = document.getElementById('mosque-wrapper');
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      const scrollY = window.scrollY;
+      const moveX = (scrollY * 0.05);
+      const moveY = -(scrollY * 0.08);
+      mosqueWrapper.style.transform = `translate(${moveX}px,${moveY}px)`;
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// ── Reveal on scroll ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.1});
+reveals.forEach(r=>observer.observe(r));
+
+// ── Drag-scroll for screens track ──
+const track = document.getElementById('screens-track');
+let isDown=false,startX,scrollLeft;
+track.addEventListener('mousedown',e=>{isDown=true;track.style.cursor='grabbing';startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft;});
+track.addEventListener('mouseleave',()=>{isDown=false;track.style.cursor='grab';});
+track.addEventListener('mouseup',()=>{isDown=false;track.style.cursor='grab';});
+track.addEventListener('mousemove',e=>{
+  if(!isDown)return;
+  e.preventDefault();
+  const x=e.pageX-track.offsetLeft;
+  const walk=(x-startX)*1.5;
+  track.scrollLeft=scrollLeft-walk;
+});
+
+// ── Nav scroll effect ──
+const nav = document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>50){
+    nav.style.boxShadow='0 4px 30px rgba(44,26,14,0.12)';
+  } else {
+    nav.style.boxShadow='none';
+  }
+});
+
+// ── APK download feedback ──
+document.getElementById('download-apk').addEventListener('click', e=>{
+  const btn = e.currentTarget;
+  const originalHTML = btn.innerHTML;
+  btn.style.background='#3D2B1F';
+  setTimeout(()=>{btn.innerHTML=originalHTML;btn.style.background='';},2000);
+});
+</script>
+</body>
+</html>
